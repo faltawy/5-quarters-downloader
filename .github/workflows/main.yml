@@ -1,11 +1,10 @@
-name: Package exe with PyInstaller - Windows
+name: Build GUI exe with Pyinstaller
 
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
+  workflow_dispatch:
+    inputs:
+      tags:
+        description: 'test build tags'
 jobs:
   build:
 
@@ -13,12 +12,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: PyInstaller Windows
+
+    - name: Package Application
       uses: JackMcKew/pyinstaller-action-windows@main
       with:
         path: .
 
     - uses: actions/upload-artifact@v2
       with:
-        name: windows
-        path: src/dist/windows # or path/to/artifact
+        name: my-app
+        path: dist/windows
