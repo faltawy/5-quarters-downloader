@@ -2,6 +2,8 @@ name: Build GUI exe with Pyinstaller
 
 on:
   workflow_dispatch:
+    branches:
+      -master
     inputs:
       tags:
         description: 'test build tags'
